@@ -5,9 +5,9 @@ public class BinToInt {
     String binary = "00010011";
     char[] numbers = binary.toCharArray();
     int result = 0;
-    for(int i=7; i>=0; i--)
+    for(int i=numbers.length-1; i>=0; i--)
       if(numbers[i]=='1')
-        result += Math.pow(2, (7-i));
+        result += Math.pow(2, (numbers.length-i-1));
     System.out.println(result);
   }
 }
