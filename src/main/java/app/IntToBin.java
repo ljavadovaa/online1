@@ -3,12 +3,10 @@ package app;
 public class IntToBin {
   public static void main(String[] args) {
     int value = 18;
-    int num = 0;
     StringBuilder bin = new StringBuilder();
-    while (value > 0) {
-      num = value % 2;
-      bin.append(num);
-      value /= 2;
+    for (int i = 0; i < 8; i++) {
+      bin.append(value & 1);
+      value = value >> 1;
     }
     System.out.println(bin.toString()); // "00010010"
   }
