@@ -1,58 +1,34 @@
 package app;
 
 public class StringOps {
-
-  // abc -> ABC
-  // aBc -> AbC
-  // Abc -> aBC
-  String invertCase(String origin) {
-    StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < origin.length(); i++) {
-      char c = origin.charAt(i);
-      while (c >= 97 && c <= 122){
-        c = (char) (origin.charAt(i) - 32);
-        sb.append(c);
-      }
-      while (c >= 65 && c <= 90){
-        c = (char) (origin.charAt(i) + 32);
-        sb.append(c);
-      }
+  String invertCaseV4(String origin) {
+    char[] chars = origin.toCharArray();
+    for (int i=0; i < chars.length; i++) {
+      chars[i] = (char) (chars[i] ^ 32); // bit XOR operation
     }
-    return sb.toString();
-
+    return new String(chars);
   }
 
-  // abc -> ABC
-  // aBc -> ABC
-  // Abc -> ABC
-
-  public static String toUpperCase(String origin) { // a -> A A -> A
-    StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < origin.length(); i++) {
-      char c = origin.charAt(i);
-      while (c >= 97 && c <= 122)
-      {
-        c = (char) (origin.charAt(i) - 32);
-        sb.append(c);
-      }
+  String toUpperCaseV2(String origin) { // a -> A A -> A
+    char[] chars = origin.toCharArray();
+    for (int i=0; i < chars.length; i++) {
+      chars[i] = (chars[i] >= 'a') ? (char)(chars[i] - 32) : chars[i];
     }
-    return sb.toString();
+    return new String(chars);
   }
 
-  // abc -> abc
-  // aBc -> abc
-  // Abc -> abc
-  String toLowerCase(String origin) { // A -> a a -> a
-    StringBuilder sb = new StringBuilder();
-    for (int i = 0; i < origin.length(); i++) {
-      char c = origin.charAt(i);
-      while (c >= 65 && c <= 90)
-      {
-        c = (char) (origin.charAt(i) + 32);
-        sb.append(c);
-      }
+  String toLowerCaseV2(String origin) { // A -> a a -> a
+    char[] chars = origin.toCharArray();
+    for (int i=0; i < chars.length; i++) {
+      chars[i] = (chars[i] >= 'a') ? chars[i] : (char)(chars[i] + 32);
     }
-    return sb.toString();
+    return new String(chars);
+  }
+
+  public static void main(String[] args) {
+    System.out.println(new StringOps().invertCaseV4("HelloWorld"));
+    System.out.println(new StringOps().toUpperCaseV2("HelloWorld"));
+    System.out.println(new StringOps().toLowerCaseV2("HelloWorld"));
   }
 
 }
