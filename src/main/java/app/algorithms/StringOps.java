@@ -1,4 +1,4 @@
-package app;
+package app.algorithms;
 
 public class StringOps {
   String invertCaseV4(String origin) {

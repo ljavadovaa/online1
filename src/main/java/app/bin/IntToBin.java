@@ -1,4 +1,4 @@
-package app;
+package app.bin;
 
 public class IntToBin {
   public static void main(String[] args) {
